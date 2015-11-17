@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%;
+			 width: 79%;
+			 float: right;}
+	  #content-window {
+        position: fixed;
+        font-family: 'Helvetica';
+        height: 100%;
+        line-height: 30px;
+        padding-left: 10px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	<div id="content-window"></div>
+    <script type="text/javascript">
+
+var map;
+var ctfastrak;
+var trips;
+var busArray = [];
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'),
+							{center: {lat:41.72,lng:-72.74},
+							 zoom: 12
+							});
+   ctfastrak = new google.maps.KmlLayer({map: map,
+										url: 'https://kvn-dly.github.io/CTfastrak%20-%20%20Rapid%20Transit%20Service.kmz',
+										preserveViewport: true,
+										suppressInfoWindows: true
+									   });
+  
+  ctfastrak.addListener('click', function(kmlEvent){
+									var text = kmlEvent.featureData.name + '<br>' + kmlEvent.featureData.description;
+									showInContentWindow(text);
+									});
+
+  function showInContentWindow(text) {
+	var contentWindow = document.getElementById('content-window')
+	contentWindow.innerHTML = text;
+	};
+
+  map.data.setStyle(function(feature){return({icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: 'pink',
+        fillOpacity: .5,
+        strokeColor: 'white',
+        strokeWeight: .5,
+        scale: 3
+      }})});	
+  var stops = map.data.loadGeoJson('https://kvn-dly.github.io/stops.json');
+  
+  getTrips();
+  
+  map.data.addListener('click', function(event){
+										text = "";
+										var i;
+										for(i=0; i < Object.keys(trips["entity"]).length;i++){
+											var j;
+											for(j=0; j < Object.keys(trips["entity"][i].trip_update.stop_time_update).length;j++){
+												if (trips["entity"][i].trip_update.stop_time_update[j].stop_id == event.feature.getProperty('stop_id')){
+													text = text + '\n' + trips["entity"][i].trip_update.vehicle.label + " : "+ toHHMMSS(trips["entity"][i].trip_update.stop_time_update[j].arrival.time)}}		
+										}
+									document.getElementById('content-window').textContent =
+									event.feature.getProperty('stop_name') + text;
+									});
+  
+  var ctfastrakBounds = new google.maps.Polygon({
+    paths: [
+      new google.maps.LatLng(41.845, -72.558),
+      new google.maps.LatLng(41.611, -72.965),
+      new google.maps.LatLng(41.611, -72.558),
+      new google.maps.LatLng(41.845, -72.965)
+    ]
+  });
+
+  google.maps.event.addListener(map, 'click', function(event) {
+    console.log(google.maps.geometry.poly.containsLocation(event.latLng, ctfastrakBounds));
+  });
+  
+  getBusLocations();
+}
+
+function toHHMMSS(time) {
+    var sec_num = parseInt(time, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    var time    = hours+':'+minutes+':'+seconds;
+    return time;
+}
+
+function getTrips(){
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://65.213.12.244/realtimefeed/tripupdate/tripupdates.json", true);
+xhr.onload = function () {
+	trips = eval("("+ xhr.response +")");
+
+}
+xhr.send()
+}
+
+function getBusLocations(){
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://65.213.12.244/realtimefeed/vehicle/vehiclepositions.json", true);
+xhr.onload = function () {
+	var feed = eval("("+ xhr.response +")");
+	var coords = "";
+	var i;
+  for (var i = 0; i < busArray.length; i++) {
+    busArray[i].setMap(null);
+  }
+  busArray = [];
+	for(i=0; i < Object.keys(feed["entity"]).length;i++){
+		var marker = new google.maps.Marker({
+				position: {lat: feed["entity"][i].vehicle.position.latitude, lng: feed["entity"][i].vehicle.position.longitude},
+				map: map,
+				title: feed["entity"][i].id,
+				icon: 'vehicle12.png'});
+		busArray.push(marker);
+		}
+	
+}
+xhr.send()
+}
+setInterval(function(){getBusLocations()}, 30000);
+
+
+	</script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKCfeZWk7iA9OXoLSWVpUfXoLm2ekRvgg&callback=initMap">
+	</script>
+<!--
+	<div>Icons made by <a href="http://www.flaticon.com/authors/graphicsbay" title="GraphicsBay">GraphicsBay</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+	<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+-->
+  </body>
+</html>
