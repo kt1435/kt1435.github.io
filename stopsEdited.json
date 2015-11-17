@@ -1,0 +1,694 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 7984,
+                "stop_code": "",
+                "stop_name": "Fenn Rd and CTFastrak",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.756902,
+                    41.696115
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12283,
+                "stop_code": "",
+                "stop_name": "CTFastrak and East Main St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.766231,
+                    41.671482
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12284,
+                "stop_code": "",
+                "stop_name": "CTFastrak and East St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.758581,
+                    41.687564
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12285,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Cedar St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.753671,
+                    41.695952
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12286,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Newington Junction Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.736253,
+                    41.716183
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12287,
+                "stop_code": "",
+                "stop_name": "CTFastrask and Elmwood Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.724792,
+                    41.730473
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12288,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Flatbush Ave Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.71648,
+                    41.741709
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12289,
+                "stop_code": "",
+                "stop_name": "New Park Ave and Kane St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.708981,
+                    41.750416
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12290,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Park St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.703676,
+                    41.757096
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12291,
+                "stop_code": "",
+                "stop_name": "CT Fastrak and Sigourney St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.694601,
+                    41.764326
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12294,
+                "stop_code": "",
+                "stop_name": "Asylum St and High St FT",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.680275,
+                    41.767716
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12295,
+                "stop_code": "",
+                "stop_name": "CT Fastrak and Sigourney St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.695062,
+                    41.764211
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12296,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Parrkville Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.703906,
+                    41.757087
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12297,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Kane St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.709077,
+                    41.750461
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12298,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Flatbush Ave Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.716347,
+                    41.741191
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12299,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Elmwood Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.724864,
+                    41.730464
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12300,
+                "stop_code": "",
+                "stop_name": "CTFastrak and Newington Junction Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.736314,
+                    41.716263
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12301,
+                "stop_code": "",
+                "stop_name": "Penn Central Railroad and Cedar St",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.753853,
+                    41.695854
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12302,
+                "stop_code": "",
+                "stop_name": "CTFastrak and East St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.758702,
+                    41.687582
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12303,
+                "stop_code": "",
+                "stop_name": "CTFastrak and East Main St Station",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.766279,
+                    41.6715
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "stop_id": 12305,
+                "stop_code": "",
+                "stop_name": "CTFastrak and New Britain Station G",
+                "zone_id": "",
+                "stop_url": "",
+                "location_type": "",
+                "parent_station": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.77913,
+                    41.668404
+                ]
+            }
+        },
+        
+            {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12320,
+        "stop_code": "",
+        "stop_name": "Fenn Rd and Opp CTFastrak",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.757302,
+          41.695338
+        ]
+      }
+    },
+    
+     {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12383,
+        "stop_code": "",
+        "stop_name": "CTFastrak and Sigourant St Lot",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.694831,
+          41.76472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12384,
+        "stop_code": "",
+        "stop_name": "CT Fastrak and Sigourney Street Lot",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.695134,
+          41.764434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12385,
+        "stop_code": "",
+        "stop_name": "Temple St and Grove St",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.923996,
+          41.310826
+        ]
+      }
+    },
+    
+     {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12441,
+        "stop_code": "",
+        "stop_name": "New Park Ave and Opp CTFastrak",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.724863,
+          41.731689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12442,
+        "stop_code": "",
+        "stop_name": "New Park Ave and CTFastrak",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.724645,
+          41.731617
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12482,
+        "stop_code": "",
+        "stop_name": "CTFastrak and Cedar St Lot",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.753998,
+          41.69614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12483,
+        "stop_code": "",
+        "stop_name": "CTFastrak and Cedar St Lot",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.754554,
+          41.696301
+        ]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12562,
+        "stop_code": "",
+        "stop_name": "CTFastrak and New Britain Station L",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.78034,
+          41.668673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12563,
+        "stop_code": "",
+        "stop_name": "CTFastrak and New Britain Station B",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.779529,
+          41.668753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12570,
+        "stop_code": "",
+        "stop_name": "New Britain Ave and Hooker St",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.85622,
+          41.675041
+        ]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12586,
+        "stop_code": "",
+        "stop_name": "CTFastrak and New Britain Bay R Express",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.778852,
+          41.668297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12587,
+        "stop_code": "",
+        "stop_name": "CTFastrak and New Britain Station S Express",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.780049,
+          41.668923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12589,
+        "stop_code": "",
+        "stop_name": "CTFastrak and New Britain Station J",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.779735,
+          41.668539
+        ]
+      }
+    },
+      {
+      "type": "Feature",
+      "properties": {
+        "stop_id": 12618,
+        "stop_code": "",
+        "stop_name": "CTFastrak and New Britain Station D",
+        "zone_id": "",
+        "stop_url": "",
+        "location_type": "",
+        "parent_station": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.778948,
+          41.668619
+        ]
+      }
+    }
+    ]
+}
