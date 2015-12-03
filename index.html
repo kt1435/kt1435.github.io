@@ -27,6 +27,7 @@
             var busArray = [];
 
             //Added*****************************
+            var gmarkers = [];
             var userLat;
             var userLng;
             var isInRange;
@@ -72,7 +73,7 @@
 
                 //Send html to 'content-window' div
                 function showInContentWindow(text) {
-                    var contentWindow = document.getElementById('content-window')
+                    var contentWindow = document.getElementById('content-window');
                     contentWindow.innerHTML = text;
                 }
                 ;
@@ -86,7 +87,7 @@
                             strokeColor: 'white',
                             strokeWeight: .5,
                             scale: 3
-                        }})
+                        }});
                 });
 
                 //Add bus stops	  
@@ -103,13 +104,13 @@
                     for (i = 0; i < Object.keys(trips["entity"]).length; i++) {
                         var j;
                         for (j = 0; j < Object.keys(trips["entity"][i].trip_update.stop_time_update).length; j++) {
-                            if (trips["entity"][i].trip_update.stop_time_update[j].stop_id == event.feature.getProperty('stop_id')) {
+                            if (trips["entity"][i].trip_update.stop_time_update[j].stop_id === event.feature.getProperty('stop_id')) {
                                 var d = new Date(1970, 0, 1);
                                 var t;
-                                d.setSeconds(trips["entity"][i].trip_update.stop_time_update[j].arrival.time)
-                                d.setHours(d.getHours() - 5)
-                                t = d.toLocaleTimeString()
-                                text = text + '<br>' + trips["entity"][i].trip_update.vehicle.label + " : " + t
+                                d.setSeconds(trips["entity"][i].trip_update.stop_time_update[j].arrival.time);
+                                d.setHours(d.getHours() - 5);
+                                t = d.toLocaleTimeString();
+                                text = text + '<br>' + trips["entity"][i].trip_update.vehicle.label + " : " + t;
                             }
                         }
                     }
@@ -145,6 +146,43 @@
                     fillColor: '#FF0000',
                     fillOpacity: 0.8});
 
+                busStops = {
+                    "data": [
+                        {
+                            "stop_id": 7984,
+                            "stop_name": "Fenn Rd and CTFastrak",
+                            "longitude": -72.756902,
+                            "latitude": 41.696115
+                        },
+                        {
+                            "stop_id": 12283,
+                            "stop_name": "CTFastrak and East Main St Station",
+                            "longitude": -72.766231,
+                            "latitude": 41.671482
+
+                        },
+                        {
+                            "stop_id": 12284,
+                            "stop_name": "CTFastrak and East St Station",
+                            "longitude": -72.758581,
+                            "latitude": 41.687564
+                        },
+                        {
+                            "stop_id": 12285,
+                            "stop_name": "CTFastrak and Cedar St Station",
+                            "longitude": -72.753671,
+                            "latitude": 41.695952
+                        },
+                        {
+                            "stop_id": 12286,
+                            "stop_name": "CTFastrak and Newington Junction Station",
+                            "longitude": -72.736253,
+                            "latitude": 41.716183
+                        }
+                    ]
+                };
+
+
                 //*********************************************
 
 
@@ -154,6 +192,8 @@
 
                 getTrips();
                 getBusLocations();
+                displayWalkRoute(41.8, -72.766231, 41.9, -72.736253);
+                displayWalkRoute(42, -72, 41.5, -72.236253);
 
             }
 
@@ -163,8 +203,8 @@
                 xhr.onload = function () {
                     trips = eval("(" + xhr.response + ")");
 
-                }
-                xhr.send()
+                };
+                xhr.send();
             }
 
             function getBusLocations() {
@@ -187,16 +227,16 @@
                         busArray.push(marker);
                     }
 
-                }
-                xhr.send()
+                };
+                xhr.send();
             }
 
             //Reload realtime data every 30 seconds
             setInterval(function () {
-                getBusLocations()
+                getBusLocations();
             }, 30000);
             setInterval(function () {
-                getTrips()
+                getTrips();
             }, 30000);
 
             //Added************************************************
@@ -205,9 +245,9 @@
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
                 controlUI.style.backgroundColor = '#fff';
-                controlUI.style.border = '2dp solid #fff';
-                controlUI.style.borderRadius = '3dp';
-                controlUI.style.boxShadow = '0 2dp 6dp rgba(0,0,0,.3)';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
                 controlUI.style.marginBottom = '5dp';
                 controlUI.style.textAlign = 'center';
@@ -242,8 +282,8 @@
                     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
                     var testPoint = LatLng(startPos.coords.latitude, startPos.coords.logitude, false);
                     isInRange = map.geometry.poly.containsLocation(testPoint, fastrakPolygon) ? true : false;
-                    userLat = startPos.coords.latitude;
-                    userLng = startPos.coords.latitude;
+                    var userLat = startPos.coords.latitude;
+                    var userLng = startPos.coords.latitude;
                     console.log('Get position succeeded');
                     console.log(userLat);
                     console.log(userLng);
@@ -266,9 +306,9 @@
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
                 controlUI.style.backgroundColor = '#fff';
-                controlUI.style.border = '2dp solid #fff';
-                controlUI.style.borderRadius = '3dp';
-                controlUI.style.boxShadow = '0 2dp 6dp rgba(0,0,0,.3)';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
                 controlUI.style.marginBottom = '5dp';
                 controlUI.style.textAlign = 'center';
@@ -312,6 +352,7 @@
                             scale: 10
                         }
                     });
+
                     console.log(isInRange);
                     console.log(userLat);
                     console.log(userLng);
@@ -319,6 +360,11 @@
                 });
             }
 
+//            function removeMarkers() {
+//                for (i = 0; i < gmarkers.length; i++) {
+//                    gmarkers[i].setMap(null);
+//                }
+//            }
 
             function distance(lat1, lon1, lat2, lon2, unit) {
                 var radlat1 = Math.PI * lat1 / 180;
@@ -342,60 +388,62 @@
                 return dist;
             }
 
-            stopsParsed = JSON.parse(busStops, "data");
+            function displayWalkRoute(startLat, startLng, endLat, endLng) {
 
-            busStops = {
-                "data": [
-                    {
-                        "stop_id": 7984,
-                        "stop_name": "Fenn Rd and CTFastrak",
-                        "latitdue": -72.756902,
-                        "longitude": 41.696115
-                    },
-                    {
-                        "stop_id": 12283,
-                        "stop_name": "CTFastrak and East Main St Station",
-                        "coordinates": [
-                            -72.766231,
-                            41.671482
-                        ]
-                    },
-                    {
-                        "stop_id": 12284,
-                        "stop_name": "CTFastrak and East St Station",
-                        "coordinates": [
-                            -72.758581,
-                            41.687564]
-                    },
-                    {
-                        "stop_id": 12285,
-                        "stop_name": "CTFastrak and Cedar St Station",
-                        "coordinates": [
-                            -72.753671,
-                            41.695952
-                        ]
-                    },
-                    {
-                        "stop_id": 12286,
-                        "stop_name": "CTFastrak and Newington Junction Station",
-                        "coordinates": [
-                            -72.736253,
-                            41.716183
-                        ]
+                var start = new google.maps.LatLng(startLat, startLng);
+                var end = new google.maps.LatLng(endLat, endLng);
+
+                var directionsDisplay = new google.maps.DirectionsRenderer();
+                directionsDisplay.setMap(map); 
+
+                var request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: google.maps.TravelMode.WALKING
+                };
+                var directionsService = new google.maps.DirectionsService();
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
                     }
-                ]
-            };
-
-
-            function closestStop(latitude, logitude) {
-
-                for (i = 0; i < 4; i++) {
-                    console.log(stopsParsed.data[i].stop_name);
-                }
-                ;
-
+                });
             }
+            
+            function displayBusRoute(startLat, startLng, endLat, endLng) {
 
+                var start = new google.maps.LatLng(startLat, startLng);
+                var end = new google.maps.LatLng(endLat, endLng);
+
+                var directionsDisplay = new google.maps.DirectionsRenderer();
+                directionsDisplay.setMap(map); 
+
+                var request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: google.maps.TravelMode.TRANSIT
+                };
+                var directionsService = new google.maps.DirectionsService();
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+            }
+            
+           
+            function calcClosestStop(startLat, startLng) {
+                var shortestDistance = 5000000;
+                var currentDistance;
+                for (i = 0; i < busStops.length; i++) {
+                    var currentDistance = distance(busStops.data[i].latitude, busStops.data[i].longitude, startLat, startLng, "M");
+                    if (currentDistance < shortestDistance) {
+                        shortestDistance = currentDistance;
+                        var lowestI = i;
+                    }
+                    ;
+                }
+                return busStops.data[0].latitude;
+            }
 
             //**************************************************
 
