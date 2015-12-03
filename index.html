@@ -32,6 +32,8 @@
             var isInRange;
             var polygonCoords;
             var fastrakPolygon;
+            var busStops;
+            var stopsParsed;
             //**********************************
 
 
@@ -89,6 +91,9 @@
 
                 //Add bus stops	  
                 var stops = map.data.loadGeoJson('https://kvn-dly.github.io/fastrakStops.json');
+
+
+
 
 
                 map.data.addListener('click', function (event) {
@@ -193,18 +198,18 @@
             setInterval(function () {
                 getTrips()
             }, 30000);
-            
+
             //Added************************************************
 
             function ShareControl(controlDiv, map) {
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
                 controlUI.style.backgroundColor = '#fff';
-                controlUI.style.border = '2px solid #fff';
-                controlUI.style.borderRadius = '3px';
-                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.border = '2dp solid #fff';
+                controlUI.style.borderRadius = '3dp';
+                controlUI.style.boxShadow = '0 2dp 6dp rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
-                controlUI.style.marginBottom = '5px';
+                controlUI.style.marginBottom = '5dp';
                 controlUI.style.textAlign = 'center';
                 controlUI.title = 'Share your current location';
                 controlDiv.appendChild(controlUI);
@@ -212,59 +217,60 @@
                 var controlText = document.createElement('div');
                 controlText.style.color = 'rgb(25,25,25)';
                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-                controlText.style.fontSize = '10px';
-                controlText.style.lineHeight = '20px';
-                controlText.style.paddingLeft = '3px';
-                controlText.style.paddingRight = '3px';
+                controlText.style.fontSize = 'Small';
+                controlText.style.lineHeight = '20dp';
+                controlText.style.paddingLeft = '3dp';
+                controlText.style.paddingRight = '3dp';
                 controlText.innerHTML = 'Share Location';
                 controlUI.appendChild(controlText);
                 // Setup the click event listeners: simply set the map to Chicago.
                 controlUI.addEventListener('click', shareLocation);
 
-                function shareLocation() {
+            }
 
-                    var startPos;
-                    var geoOptions = {
-                        enableHighAccuracy: true,
-                        timeout: 10 * 1000
-                    }
+            function shareLocation() {
 
-                    var geoSuccess = function (position) {
-                        startPos = position;
-                        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-                        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-                        var testPoint = LatLng(startPos.coords.latitude, startPos.coords.logitude, false);
-                        isInRange = map.geometry.poly.containsLocation(testPoint, fastrakPolygon) ? true : false;                        
-                        userLat = startPos.coords.latitude;
-                        userLng = startPos.coords.latitude;
-                        console.log('Get position succeeded');
-                        console.log(userLat);
-                        console.log(userLng);
-                        return userLat, userLng, isInRange;
-                    };
-                    var geoError = function (error) {
-                        console.log('Error occurred. Error code: ' + error.code);
-                        // error.code can be:
-                        //   0: unknown error
-                        //   1: permission denied
-                        //   2: position unavailable (error response from location provider)
-                        //   3: timed out
-                    };
-
-                    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-
+                var startPos;
+                var geoOptions = {
+                    enableHighAccuracy: true,
+                    timeout: 10 * 1000
                 }
+
+                var geoSuccess = function (position) {
+                    startPos = position;
+                    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+                    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+                    var testPoint = LatLng(startPos.coords.latitude, startPos.coords.logitude, false);
+                    isInRange = map.geometry.poly.containsLocation(testPoint, fastrakPolygon) ? true : false;
+                    userLat = startPos.coords.latitude;
+                    userLng = startPos.coords.latitude;
+                    console.log('Get position succeeded');
+                    console.log(userLat);
+                    console.log(userLng);
+                    return userLat, userLng, isInRange;
+                };
+                var geoError = function (error) {
+                    console.log('Error occurred. Error code: ' + error.code);
+                    // error.code can be:
+                    //   0: unknown error
+                    //   1: permission denied
+                    //   2: position unavailable (error response from location provider)
+                    //   3: timed out
+                };
+
+                navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+
             }
 
             function CenterControl(controlDiv, map) {
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
                 controlUI.style.backgroundColor = '#fff';
-                controlUI.style.border = '2px solid #fff';
-                controlUI.style.borderRadius = '3px';
-                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.border = '2dp solid #fff';
+                controlUI.style.borderRadius = '3dp';
+                controlUI.style.boxShadow = '0 2dp 6dp rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
-                controlUI.style.marginBottom = '5px';
+                controlUI.style.marginBottom = '5dp';
                 controlUI.style.textAlign = 'center';
                 controlUI.title = 'Click your location on the map';
                 controlDiv.appendChild(controlUI);
@@ -272,45 +278,124 @@
                 var controlText = document.createElement('div');
                 controlText.style.color = 'rgb(25,25,25)';
                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-                controlText.style.fontSize = '10px';
-                controlText.style.lineHeight = '20px';
-                controlText.style.paddingLeft = '3px';
-                controlText.style.paddingRight = '3px';
+                controlText.style.fontSize = 'Small';
+                controlText.style.lineHeight = '20dp';
+                controlText.style.paddingLeft = '3dp';
+                controlText.style.paddingRight = '3dp';
                 controlText.innerHTML = 'Pick Location';
                 controlUI.appendChild(controlText);
                 // Setup the click event listeners: simply set the map to Chicago.
                 controlUI.addEventListener('click', pickLocation);
 
-                function pickLocation() {
-                    google.maps.event.addListenerOnce(map, 'click', function (e) {
-                        var resultColor =
-                                google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon) ?
-                                'green' :
-                                'red';
-                        isInRange = google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon)
-                                ? true : false;
-                        userLat = e.latLng.lat().toString();
-                        userLng = e.latLng.lng().toString();
-
-                        new google.maps.Marker({
-                            position: e.latLng,
-                            map: map,
-                            icon: {
-                                path: google.maps.SymbolPath.CIRCLE,
-                                fillColor: resultColor,
-                                fillOpacity: .2,
-                                strokeColor: 'white',
-                                strokeWeight: .5,
-                                scale: 10
-                            }
-                        });
-                        console.log(isInRange);
-                        console.log(userLat);
-                        console.log(userLng);
-                        return isInRange, userLat, userLng;
-                    });
-                }
             }
+
+            function pickLocation() {
+                google.maps.event.addListenerOnce(map, 'click', function (e) {
+                    var resultColor =
+                            google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon) ?
+                            'green' :
+                            'red';
+                    isInRange = google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon)
+                            ? true : false;
+                    userLat = e.latLng.lat().toString();
+                    userLng = e.latLng.lng().toString();
+
+                    new google.maps.Marker({
+                        position: e.latLng,
+                        map: map,
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            fillColor: resultColor,
+                            fillOpacity: .2,
+                            strokeColor: 'white',
+                            strokeWeight: .5,
+                            scale: 10
+                        }
+                    });
+                    console.log(isInRange);
+                    console.log(userLat);
+                    console.log(userLng);
+                    return isInRange, userLat, userLng;
+                });
+            }
+
+
+            function distance(lat1, lon1, lat2, lon2, unit) {
+                var radlat1 = Math.PI * lat1 / 180;
+                var radlat2 = Math.PI * lat2 / 180;
+                var radlon1 = Math.PI * lon1 / 180;
+                var radlon2 = Math.PI * lon2 / 180;
+                var theta = lon1 - lon2;
+                var radtheta = Math.PI * theta / 180;
+                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                dist = Math.acos(dist);
+                dist = dist * 180 / Math.PI;
+                dist = dist * 60 * 1.1515;
+                if (unit === "K") {
+                    dist = dist * 1.609344;
+                }
+                ;
+                if (unit === "N") {
+                    dist = dist * 0.8684;
+                }
+                ;
+                return dist;
+            }
+
+            stopsParsed = JSON.parse(busStops, "data");
+
+            busStops = {
+                "data": [
+                    {
+                        "stop_id": 7984,
+                        "stop_name": "Fenn Rd and CTFastrak",
+                        "latitdue": -72.756902,
+                        "longitude": 41.696115
+                    },
+                    {
+                        "stop_id": 12283,
+                        "stop_name": "CTFastrak and East Main St Station",
+                        "coordinates": [
+                            -72.766231,
+                            41.671482
+                        ]
+                    },
+                    {
+                        "stop_id": 12284,
+                        "stop_name": "CTFastrak and East St Station",
+                        "coordinates": [
+                            -72.758581,
+                            41.687564]
+                    },
+                    {
+                        "stop_id": 12285,
+                        "stop_name": "CTFastrak and Cedar St Station",
+                        "coordinates": [
+                            -72.753671,
+                            41.695952
+                        ]
+                    },
+                    {
+                        "stop_id": 12286,
+                        "stop_name": "CTFastrak and Newington Junction Station",
+                        "coordinates": [
+                            -72.736253,
+                            41.716183
+                        ]
+                    }
+                ]
+            };
+
+
+            function closestStop(latitude, logitude) {
+
+                for (i = 0; i < 4; i++) {
+                    console.log(stopsParsed.data[i].stop_name);
+                }
+                ;
+
+            }
+
 
             //**************************************************
 
