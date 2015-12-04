@@ -194,25 +194,6 @@
         {
             "type": "Feature",
             "properties": {
-                "stop_id": 12294,
-                "stop_code": "",
-                "stop_name": "Asylum St and High St FT",
-                "zone_id": "",
-                "stop_url": "",
-                "location_type": "",
-                "parent_station": ""
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -72.680275,
-                    41.767716
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
                 "stop_id": 12295,
                 "stop_code": "",
                 "stop_name": "CT Fastrak and Sigourney St Station",
@@ -234,7 +215,7 @@
             "properties": {
                 "stop_id": 12296,
                 "stop_code": "",
-                "stop_name": "CTFastrak and Parrkville Station",
+                "stop_name": "CTFastrak and Parkville Station",
                 "zone_id": "",
                 "stop_url": "",
                 "location_type": "",
@@ -321,25 +302,6 @@
                 "coordinates": [
                     -72.736314,
                     41.716263
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "stop_id": 12301,
-                "stop_code": "",
-                "stop_name": "Penn Central Railroad and Cedar St",
-                "zone_id": "",
-                "stop_url": "",
-                "location_type": "",
-                "parent_station": ""
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -72.753853,
-                    41.695854
                 ]
             }
         },

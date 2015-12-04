@@ -26,16 +26,220 @@
             var trips;
             var busArray = [];
 
-            //Added*****************************
+            //KT Added*****************************
             var gmarkers = [];
             var userLat;
             var userLng;
+
+            var destinationLat;
+            var destinationLng;
+
             var isInRange;
             var polygonCoords;
             var fastrakPolygon;
-            var busStops;
-            var stopsParsed;
-            //**********************************
+            var busStops = [
+                {
+                    "stop_id": 7984,
+                    "stop_name": "Fenn Rd and CTFastrak",
+                    "longitude": -72.756902,
+                    "latitude": 41.696115
+                },
+                {
+                    "stop_id": 12283,
+                    "stop_name": "CTFastrak and East Main St Station",
+                    "longitude": -72.766231,
+                    "latitude": 41.671482
+
+                },
+                {
+                    "stop_id": 12284,
+                    "stop_name": "CTFastrak and East St Station",
+                    "longitude": -72.758581,
+                    "latitude": 41.687564
+                },
+                {
+                    "stop_id": 12285,
+                    "stop_name": "CTFastrak and Cedar St Station",
+                    "longitude": -72.753671,
+                    "latitude": 41.695952
+                },
+                {
+                    "stop_id": 12286,
+                    "stop_name": "CTFastrak and Newington Junction Station",
+                    "longitude": -72.736253,
+                    "latitude": 41.716183
+                },
+                {
+                    "stop_id": 12287,
+                    "stop_name": "CTFastrask and Elmwood Station",
+                    "longitude": -72.724792,
+                    "latitude": 41.730473
+                },
+                {
+                    "stop_id": 12288,
+                    "stop_name": "CTFastrak and Flatbush Ave Station",
+                    "longitude": -72.71648,
+                    "latitude": 41.741709
+                },
+                {
+                    "stop_id": 12289,
+                    "stop_name": "New Park Ave and Kane St Station",
+                    "longitude": -72.708981,
+                    "latitude": 41.750416
+                },
+                {
+                    "stop_id": 12290,
+                    "stop_name": "CTFastrak and Park St Station",
+                    "longitude": -72.703676,
+                    "latitude": 41.757096
+                },
+                {
+                    "stop_id": 12291,
+                    "stop_name": "CT Fastrak and Sigourney St Station",
+                    "longitude": -72.694601,
+                    "latitude": 41.764326
+                },
+                {
+                    "stop_id": 12295,
+                    "stop_name": "CT Fastrak and Sigourney St Station",
+                    "longitude": -72.695062,
+                    "latitude": 41.764211
+                },
+                {
+                    "stop_id": 12296,
+                    "stop_name": "CTFastrak and Parkville Station",
+                    "longitude": -72.703906,
+                    "latitude": 41.757087
+                },
+                {
+                    "stop_id": 12297,
+                    "stop_name": "CTFastrak and Kane St Station",
+                    "longitude": -72.709077,
+                    "latitude": 41.750461
+                },
+                {
+                    "stop_id": 12298,
+                    "stop_name": "CTFastrak and Flatbush Ave Station",
+                    "longitude": -72.716347,
+                    "latitude": 41.741191
+                },
+                {
+                    "stop_id": 12299,
+                    "stop_name": "CTFastrak and Elmwood Station",
+                    "longitude": -72.724864,
+                    "latitude": 41.730464
+                },
+                {
+                    "stop_id": 12300,
+                    "stop_name": "CTFastrak and Newington Junction Station",
+                    "longitude": -72.736314,
+                    "latitude": 41.716263
+                },
+                {
+                    "stop_id": 12302,
+                    "stop_name": "CTFastrak and East St Station",
+                    "longitude": -72.758702,
+                    "latitude": 41.687582
+                },
+                {
+                    "stop_id": 12305,
+                    "stop_name": "CTFastrak and New Britain Station G",
+                    "longitude": -72.77913,
+                    "latitude": 41.668404
+                },
+                {
+                    "stop_id": 12320,
+                    "stop_name": "Fenn Rd and Opp CTFastrak",
+                    "longitude": -72.757302,
+                    "latitude": 41.695338
+                },
+                {
+                    "stop_id": 12383,
+                    "stop_name": "CTFastrak and Sigourant St Lot",
+                    "longitude": -72.694831,
+                    "latitude": 41.76472
+                },
+                {
+                    "stop_id": 12384,
+                    "stop_name": "CT Fastrak and Sigourney Street Lot",
+                    "longitude": -72.695134,
+                    "latitude": 41.764434
+                },
+                {
+                    "stop_id": 12385,
+                    "stop_name": "Temple St and Grove St",
+                    "longitude": -72.923996,
+                    "latitude": 41.310826
+                },
+                {
+                    "stop_id": 12441,
+                    "stop_name": "New Park Ave and Opp CTFastrak",
+                    "longitude": -72.724863,
+                    "latitude": 41.731689
+                },
+                {
+                    "stop_id": 12442,
+                    "stop_name": "New Park Ave and CTFastrak",
+                    "longitude": -72.724645,
+                    "latitude": 41.731617
+                },
+                {
+                    "stop_id": 12482,
+                    "stop_name": "CTFastrak and Cedar St Lot",
+                    "longitude": -72.753998,
+                    "latitude": 41.69614
+                },
+                {
+                    "stop_id": 12483,
+                    "stop_name": "CTFastrak and Cedar St Lot",
+                    "longitude": -72.754554,
+                    "latitude": 41.696301
+                },
+                {
+                    "stop_id": 12562,
+                    "stop_name": "CTFastrak and New Britain Station L",
+                    "longitude": -72.78034,
+                    "latitude": 41.668673
+                },
+                {
+                    "stop_id": 12563,
+                    "stop_name": "CTFastrak and New Britain Station B",
+                    "longitude": -72.779529,
+                    "latitude": 41.668753
+                },
+                {
+                    "stop_id": 12570,
+                    "stop_name": "New Britain Ave and Hooker St",
+                    "longitude": -72.85622,
+                    "latitude": 41.675041
+                },
+                {
+                    "stop_id": 12586,
+                    "stop_name": "CTFastrak and New Britain Bay R Express",
+                    "longitude": -72.778852,
+                    "latitude": 41.668297
+                },
+                {
+                    "stop_id": 12587,
+                    "stop_name": "CTFastrak and New Britain Station S Express",
+                    "longitude": -72.780049,
+                    "latitude": 41.668923
+                },
+                {
+                    "stop_id": 12589,
+                    "stop_name": "CTFastrak and New Britain Station J",
+                    "longitude": -72.779735,
+                    "latitude": 41.668539
+                },
+                {
+                    "stop_id": 12618,
+                    "stop_name": "CTFastrak and New Britain Station D",
+                    "longitude": -72.778948,
+                    "latitude": 41.668619
+                }
+            ];
+            ;
+            //End**********************************
 
 
 
@@ -47,16 +251,35 @@
                             zoom: 12
                         });
 
-                //Added****************************************************
+                //KT Added****************************************************
                 var centerControlDiv = document.createElement('div');
                 var centerControl = new CenterControl(centerControlDiv, map);
                 centerControlDiv.index = 1;
                 map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
                 var shareControlDiv = document.createElement('div');
                 var shareControl = new ShareControl(shareControlDiv, map);
                 shareControlDiv.index = 1;
-                map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(shareControlDiv);
-                //*********************************************************
+                map.controls[google.maps.ControlPosition.TOP_CENTER].push(shareControlDiv);
+
+                var destinationControlDiv = document.createElement('div');
+                var destinationControl = new DestinationControl(destinationControlDiv, map);
+                destinationControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.TOP_CENTER].push(destinationControlDiv);
+
+                var stopControlDiv = document.createElement('div');
+                var stopControl = new StopControl(stopControlDiv, map);
+                stopControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(stopControlDiv);
+
+                var routeControlDiv = document.createElement('div');
+                var routeControl = new RouteControl(routeControlDiv, map);
+                routeControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(routeControlDiv);
+                
+                //End*********************************************************
+                
+                
 
                 //Load CTFastrak routes, parking, and multi-use trail access points
                 ctfastrak = new google.maps.KmlLayer({map: map,
@@ -126,7 +349,7 @@
                     ]
                 });
 
-                //Added*****************************************
+                //KT Added*****************************************
 
                 polygonCoords = [
                     {lat: 41.806523, lng: -72.751854},
@@ -146,44 +369,7 @@
                     fillColor: '#FF0000',
                     fillOpacity: 0.8});
 
-                busStops = {
-                    "data": [
-                        {
-                            "stop_id": 7984,
-                            "stop_name": "Fenn Rd and CTFastrak",
-                            "longitude": -72.756902,
-                            "latitude": 41.696115
-                        },
-                        {
-                            "stop_id": 12283,
-                            "stop_name": "CTFastrak and East Main St Station",
-                            "longitude": -72.766231,
-                            "latitude": 41.671482
-
-                        },
-                        {
-                            "stop_id": 12284,
-                            "stop_name": "CTFastrak and East St Station",
-                            "longitude": -72.758581,
-                            "latitude": 41.687564
-                        },
-                        {
-                            "stop_id": 12285,
-                            "stop_name": "CTFastrak and Cedar St Station",
-                            "longitude": -72.753671,
-                            "latitude": 41.695952
-                        },
-                        {
-                            "stop_id": 12286,
-                            "stop_name": "CTFastrak and Newington Junction Station",
-                            "longitude": -72.736253,
-                            "latitude": 41.716183
-                        }
-                    ]
-                };
-
-
-                //*********************************************
+                //End *********************************************
 
 
                 google.maps.event.addListener(map, 'click', function (event) {
@@ -192,8 +378,6 @@
 
                 getTrips();
                 getBusLocations();
-                displayWalkRoute(41.8, -72.766231, 41.9, -72.736253);
-                displayWalkRoute(42, -72, 41.5, -72.236253);
 
             }
 
@@ -239,8 +423,83 @@
                 getTrips();
             }, 30000);
 
-            //Added************************************************
+            //KT Added************************************************
 
+            /*
+             * Custom button for the user to selection their destination.
+             */
+            function DestinationControl(controlDiv, map) {
+                // Set CSS for the control border.
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#fff';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '5dp';
+                controlUI.style.marginLeft = '5px';
+                controlUI.style.marginRight = '5px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Pick your destination';
+                controlDiv.appendChild(controlUI);
+                // Set CSS for the control interior.
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(25,25,25)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = 'Small';
+                controlText.style.lineHeight = '20dp';
+                controlText.style.paddingLeft = '3px';
+                controlText.style.paddingRight = '3px';
+                controlText.innerHTML = 'Pick Destination';
+                controlUI.appendChild(controlText);
+                // Setup the click event listeners: simply set the map to Chicago.
+                controlUI.addEventListener('click', pickDestination);
+            }
+
+            /*
+             * Allows the user to click on a location on the map to select thier location. 
+             * Updates the global variables userLat and userLng to the position picked.
+             */
+            function pickDestination() {
+                google.maps.event.addListenerOnce(map, 'click', function (e) {
+                    var resultColor =
+                            google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon) ?
+                            'blue' :
+                            'yellow';
+                    isInRange = google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon)
+                            ? true : false;
+                    if (isInRange === true) {
+                        destinationLat = e.latLng.lat().toString();
+                        destinationLng = e.latLng.lng().toString();
+                    } else {
+                        console.log("Out of Range, please retry.");
+                    }
+                    ;
+
+                    new google.maps.Marker({
+                        position: e.latLng,
+                        map: map,
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            fillColor: resultColor,
+                            fillOpacity: .2,
+                            strokeColor: 'white',
+                            strokeWeight: .5,
+                            scale: 10
+                        }
+                    });
+
+                    console.log(isInRange);
+                    console.log(destinationLat);
+                    console.log(destinationLng);
+                    return [isInRange, destinationLat, destinationLng];
+                });
+            }
+
+
+            /*
+             * Custom button for the user to share their location.
+             */
             function ShareControl(controlDiv, map) {
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
@@ -250,6 +509,8 @@
                 controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
                 controlUI.style.marginBottom = '5dp';
+                controlUI.style.marginLeft = '5px';
+                controlUI.style.marginRight = '5px';
                 controlUI.style.textAlign = 'center';
                 controlUI.title = 'Share your current location';
                 controlDiv.appendChild(controlUI);
@@ -259,15 +520,79 @@
                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
                 controlText.style.fontSize = 'Small';
                 controlText.style.lineHeight = '20dp';
-                controlText.style.paddingLeft = '3dp';
-                controlText.style.paddingRight = '3dp';
+                controlText.style.paddingLeft = '3px';
+                controlText.style.paddingRight = '3px';
                 controlText.innerHTML = 'Share Location';
                 controlUI.appendChild(controlText);
                 // Setup the click event listeners: simply set the map to Chicago.
                 controlUI.addEventListener('click', shareLocation);
+//                controlUI.addEventListener('click', routeClosestBS);
 
             }
 
+            function RouteControl(controlDiv, map) {
+                // Set CSS for the control border.
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#fff';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '5dp';
+                controlUI.style.marginLeft = '5px';
+                controlUI.style.marginRight = '5px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Display the route';
+                controlDiv.appendChild(controlUI);
+                // Set CSS for the control interior.
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(25,25,25)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = 'Small';
+                controlText.style.lineHeight = '20dp';
+                controlText.style.paddingLeft = '3px';
+                controlText.style.paddingRight = '3px';
+                controlText.innerHTML = 'Show Route';
+                controlUI.appendChild(controlText);
+                // Setup the click event listeners: simply set the map to Chicago.
+                controlUI.addEventListener('click', displayRoute);
+//                controlUI.addEventListener('click', routeClosestBS);
+
+            }
+
+            function StopControl(controlDiv, map) {
+                // Set CSS for the control border.
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#fff';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginBottom = '5dp';
+                controlUI.style.marginLeft = '5px';
+                controlUI.style.marginRight = '5px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Display route to the closest stop';
+                controlDiv.appendChild(controlUI);
+                // Set CSS for the control interior.
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(25,25,25)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = 'Small';
+                controlText.style.lineHeight = '20dp';
+                controlText.style.paddingLeft = '3px';
+                controlText.style.paddingRight = '3px';
+                controlText.innerHTML = 'Show Closest Stop';
+                controlUI.appendChild(controlText);
+                // Setup the click event listeners: simply set the map to Chicago.
+                controlUI.addEventListener('click', findStop);
+
+            }
+
+            /*
+             * Request the user allow tracking.
+             * Updates the global variables userLat and userLng if successful and in range.
+             */
             function shareLocation() {
 
                 var startPos;
@@ -282,12 +607,18 @@
                     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
                     var testPoint = LatLng(startPos.coords.latitude, startPos.coords.logitude, false);
                     isInRange = map.geometry.poly.containsLocation(testPoint, fastrakPolygon) ? true : false;
-                    var userLat = startPos.coords.latitude;
-                    var userLng = startPos.coords.latitude;
+                    if (isInRange === true) {
+                        userLat = startPos.coords.latitude;
+                        userLng = startPos.coords.latitude;
+                    } else {
+                        console.log("You are not in range.")
+                    }
+                    ;
                     console.log('Get position succeeded');
+                    console.log(isInRange);
                     console.log(userLat);
                     console.log(userLng);
-                    return userLat, userLng, isInRange;
+                    return [userLat, userLng, isInRange];
                 };
                 var geoError = function (error) {
                     console.log('Error occurred. Error code: ' + error.code);
@@ -302,6 +633,9 @@
 
             }
 
+            /*
+             * Custom button for pick location.
+             */
             function CenterControl(controlDiv, map) {
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
@@ -311,6 +645,8 @@
                 controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
                 controlUI.style.cursor = 'pointer';
                 controlUI.style.marginBottom = '5dp';
+                controlUI.style.marginLeft = '5px';
+                controlUI.style.marginRight = '5px';
                 controlUI.style.textAlign = 'center';
                 controlUI.title = 'Click your location on the map';
                 controlDiv.appendChild(controlUI);
@@ -320,8 +656,8 @@
                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
                 controlText.style.fontSize = 'Small';
                 controlText.style.lineHeight = '20dp';
-                controlText.style.paddingLeft = '3dp';
-                controlText.style.paddingRight = '3dp';
+                controlText.style.paddingLeft = '10dp';
+                controlText.style.paddingRight = '10dp';
                 controlText.innerHTML = 'Pick Location';
                 controlUI.appendChild(controlText);
                 // Setup the click event listeners: simply set the map to Chicago.
@@ -329,6 +665,10 @@
 
             }
 
+            /*
+             * Allows the user to click on a location on the map to select thier location. 
+             * Updates the global variables userLat and userLng to the position picked.
+             */
             function pickLocation() {
                 google.maps.event.addListenerOnce(map, 'click', function (e) {
                     var resultColor =
@@ -337,8 +677,13 @@
                             'red';
                     isInRange = google.maps.geometry.poly.containsLocation(e.latLng, fastrakPolygon)
                             ? true : false;
-                    userLat = e.latLng.lat().toString();
-                    userLng = e.latLng.lng().toString();
+                    if (isInRange === true) {
+                        userLat = e.latLng.lat().toString();
+                        userLng = e.latLng.lng().toString();
+                    } else {
+                        console.log("Out of Range, please retry.");
+                    }
+                    ;
 
                     new google.maps.Marker({
                         position: e.latLng,
@@ -356,15 +701,15 @@
                     console.log(isInRange);
                     console.log(userLat);
                     console.log(userLng);
-                    return isInRange, userLat, userLng;
+                    return [isInRange, userLat, userLng];
                 });
             }
 
-//            function removeMarkers() {
-//                for (i = 0; i < gmarkers.length; i++) {
-//                    gmarkers[i].setMap(null);
-//                }
-//            }
+
+
+            /*
+             * Calculates the distance between points.
+             */
 
             function distance(lat1, lon1, lat2, lon2, unit) {
                 var radlat1 = Math.PI * lat1 / 180;
@@ -388,13 +733,17 @@
                 return dist;
             }
 
+            /*
+             * Displays the route (by walking) between the start and destination on the map.
+             * Takes in the start Latitude, Longitude, end Latitude, end Longitude. 
+             */
             function displayWalkRoute(startLat, startLng, endLat, endLng) {
 
                 var start = new google.maps.LatLng(startLat, startLng);
                 var end = new google.maps.LatLng(endLat, endLng);
 
                 var directionsDisplay = new google.maps.DirectionsRenderer();
-                directionsDisplay.setMap(map); 
+                directionsDisplay.setMap(map);
 
                 var request = {
                     origin: start,
@@ -408,14 +757,18 @@
                     }
                 });
             }
-            
+
+            /*
+             * Displays a route (by bus) on the map.
+             * Takes in the start Latitude, Longitude, end Latitude, end Longitude.
+             */
             function displayBusRoute(startLat, startLng, endLat, endLng) {
 
                 var start = new google.maps.LatLng(startLat, startLng);
                 var end = new google.maps.LatLng(endLat, endLng);
 
                 var directionsDisplay = new google.maps.DirectionsRenderer();
-                directionsDisplay.setMap(map); 
+                directionsDisplay.setMap(map);
 
                 var request = {
                     origin: start,
@@ -424,28 +777,59 @@
                 };
                 var directionsService = new google.maps.DirectionsService();
                 directionsService.route(request, function (response, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
+                    if (status === google.maps.DirectionsStatus.OK) {
                         directionsDisplay.setDirections(response);
                     }
                 });
             }
-            
-           
-            function calcClosestStop(startLat, startLng) {
-                var shortestDistance = 5000000;
-                var currentDistance;
-                for (i = 0; i < busStops.length; i++) {
-                    var currentDistance = distance(busStops.data[i].latitude, busStops.data[i].longitude, startLat, startLng, "M");
-                    if (currentDistance < shortestDistance) {
-                        shortestDistance = currentDistance;
-                        var lowestI = i;
-                    }
-                    ;
+
+            /*
+             * Finds the closest stop in the busStops array to the starting location.
+             * Returns the index of the array with the closest stop.
+             */
+
+            function displayRoute() {
+                if(userLat === null || userLng === null || destinationLat === null || destinationLng === null){
+                    console.log("Must select both location and destination");
+                } else {
+                    varStartIndex = calcClosestStop(userLat, userLng);
+                    varDestIndex = calcClosestStop(destinationLat, destinationLng);
+//                    displayWalkRoute(userLat, userLat, busStops[varStartIndex].latitude, busStops[varStartIndex].longitude);
+                    displayBusRoute(busStops[varStartIndex].latitude, busStops[varStartIndex].longitude, busStops[varDestIndex].latitude, busStops[varDestIndex].longitude);
+                    displayWalkRoute(busStops[varDestIndex].latitude, busStops[varDestIndex].longitude, destinationLat, destinationLng);
+                    
                 }
-                return busStops.data[0].latitude;
+
             }
 
-            //**************************************************
+            /*
+             * Automatically displays the route (by walking) to the closest busstop.
+             */
+            function findStop() {
+                var closestI = calcClosestStop(userLat, userLng, busStops);
+                displayWalkRoute(userLat, userLng, busStops[closestI].latitude, busStops[closestI].longitude);
+                console.log(closestI);
+                console.log(busStops[closestI].latitude);
+                console.log(busStops[closestI].longitude);
+            }
+
+            function calcClosestStop(startLat, startLng) {
+                var minI;
+                var currentDistance;
+                var minDistance = 1000000;
+                for (i = 0; i < busStops.length; i++) {
+                    currentDistance = distance(busStops[i].latitude, busStops[i].longitude, startLat, startLng, "M");
+                    console.log(currentDistance);
+                    if (currentDistance < minDistance) {
+                        minDistance = currentDistance;
+                        minI = i;
+                    }
+                }
+                return minI;
+            }
+
+
+            //End**************************************************
 
 
         </script>
