@@ -593,43 +593,43 @@
              * Request the user allow tracking.
              * Updates the global variables userLat and userLng if successful and in range.
              */
-            function shareLocation() {
 
-                var startPos;
-                var geoOptions = {
-                    enableHighAccuracy: true,
-                    timeout: 10 * 1000
+            function shareLocation() {
+                var infoWindow = new google.maps.InfoWindow({map: map});
+
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        var testPoint = LatLng(pos.lat, pos.lng, false);
+
+                        infoWindow.setPosition(pos);
+                        isInRange = map.geometry.poly.containsLocation(testPoint, fastrakPolygon) ? true : false;
+                        if (isInRange) {
+                            infoWindow.setContent('Location found.');
+                        } else {
+                            infoWindow.setContent('Location out of range.');
+                        }
+                        map.setCenter(pos);
+                    }, function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
                 }
 
-                var geoSuccess = function (position) {
-                    startPos = position;
-                    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-                    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-                    var testPoint = LatLng(startPos.coords.latitude, startPos.coords.logitude, false);
-                    isInRange = map.geometry.poly.containsLocation(testPoint, fastrakPolygon) ? true : false;
-                    if (isInRange === true) {
-                        userLat = startPos.coords.latitude;
-                        userLng = startPos.coords.latitude;
-                    } else {
-                        console.log("You are not in range.")
-                    }
-                    ;
-                    console.log('Get position succeeded');
-                    console.log(isInRange);
-                    console.log(userLat);
-                    console.log(userLng);
-                    return [userLat, userLng, isInRange];
-                };
-                var geoError = function (error) {
-                    console.log('Error occurred. Error code: ' + error.code);
-                    // error.code can be:
-                    //   0: unknown error
-                    //   1: permission denied
-                    //   2: position unavailable (error response from location provider)
-                    //   3: timed out
-                };
+                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent(browserHasGeolocation ?
+                            'Error: The Geolocation service failed.' :
+                            'Error: Your browser doesn\'t support geolocation.');
+                }
 
-                navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 
             }
 
