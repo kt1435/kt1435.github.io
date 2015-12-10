@@ -1,0 +1,89 @@
+html, body
+{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map
+{
+	height: 100%;
+	width: 80%;
+	float: right;
+}
+
+
+.menu {
+	width: auto;
+	height: 100%;
+	position: absolute;
+	background: #CCCC99;
+	left: -500px;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ns-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+}
+
+.menu_icon {
+	padding: 10px 20px;
+	background: #CCCC99;
+	color: #98703E;
+	cursor: pointer;
+	float: right;
+	margin-top: 4px;
+}
+
+#menuToggle {
+	display: none;
+}
+
+#menuToggle:checked ~ .menu {
+	position: absolute;
+	left: 0;
+}
+#content-window
+{
+    background-color: #CCCC99;
+	position: fixed;
+    font-family: 'Helvetica';
+    height: 100%;
+    line-height: 30px;
+    padding-left: 5px;
+	padding-right: 5px;
+    width: 20%;
+}
+
+#content-window a:hover { background: #CCCC99; color: white; }
+
+#content-header
+{
+	background-color: #CCCC99;
+	color: white;
+	text-align: center;
+	color: black;
+}
+
+ #wrapper {
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+          }
+	
+
+#content-content
+{
+	background-color: #CCCC99;
+	text-align: center;
+	color: black;
+}
+
+#route-form
+{
+	position: absolute;
+	display:block;
+	left: 21%;
+	top:10%;
+	background-color: #99CCFF;
+}
