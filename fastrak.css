@@ -12,7 +12,7 @@ html, body
 	float: right;
 }
 
-
+/*
 .menu {
 	width: auto;
 	height: 100%;
@@ -37,12 +37,16 @@ html, body
 
 #menuToggle {
 	display: none;
+	position: absolute;
+	left: 10%;
+	float:left;
 }
 
 #menuToggle:checked ~ .menu {
 	position: absolute;
-	left: 0;
-}
+	left: 10%;
+	float: left;
+}*/
 #content-window
 {
     background-color: #CCCC99;
@@ -62,7 +66,8 @@ html, body
 	background-color: #CCCC99;
 	color: white;
 	text-align: center;
-	color: black;
+	color: white;
+	font-weight: bold;
 }
 
  #wrapper {
@@ -74,7 +79,7 @@ html, body
 
 #content-content
 {
-	background-color: #CCCC99;
+	background-color: white;
 	text-align: center;
 	color: black;
 }
@@ -83,7 +88,10 @@ html, body
 {
 	position: absolute;
 	display:block;
-	left: 21%;
-	top:10%;
-	background-color: #99CCFF;
+	left: 35%;
+	top:2%;
+	background-color: #CCCC99;
+	padding: 10px;
+	font-weight: bold;
+	color: white;
 }

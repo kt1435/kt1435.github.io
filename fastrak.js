@@ -327,7 +327,6 @@ function codeStart() {
   
 
 function codeDestination() {
-	if(!destinationLat){
     var address = document.getElementById("end").value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -338,7 +337,7 @@ function codeDestination() {
       } else {
         alert("Invalid destination");
       }
-    });}
+    });
   }
 
 function getTrips(){
@@ -510,6 +509,7 @@ function displayWalkRoute(startLat, startLng, endLat, endLng) {
 			directionsDisplay.setDirections(response);
 			document.getElementById('content-content').innerHTML = ""
 			directionsDisplay.setPanel(document.getElementById("content-content"));
+			document.getElementById("content-header").innerHTML = "Your Directions"
 		}
 	});
 }
@@ -531,6 +531,7 @@ function displayBusRoute(startLat, startLng, endLat, endLng) {
 			directionsDisplay.setDirections(response);
 			document.getElementById('content-content').innerHTML = ""
 			directionsDisplay.setPanel(document.getElementById("content-content"));
+			document.getElementById("content-header").innerHTML = "Your Directions"
 		}
 	});
 }
